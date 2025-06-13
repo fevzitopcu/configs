@@ -8,9 +8,10 @@ server:
 
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
-  datasource:
-    schema: classpath*:db/hsqldb/schema.sql
-    data: classpath*:db/hsqldb/data.sql
+  sql:
+    init:
+      schema-locations: classpath*:db/hsqldb/schema.sql
+      data-locations: classpath*:db/hsqldb/data.sql
   sleuth:
     sampler:
       probability: 1.0
@@ -38,10 +39,6 @@ spring.cloud.refresh.refreshable: false
 # Logging
 logging.level.org.springframework: INFO
 
-
-
----
-
 # Metrics
 management:
   endpoint:
@@ -57,6 +54,9 @@ management:
     export:
       prometheus:
         enabled: true
+  tracing:
+    sampling:
+      probability: 1
 
 # Chaos Engineering
 ---
@@ -81,13 +81,11 @@ spring:
     activate:
       on-profile: mysql
   datasource:
-    url: jdbc:mysql://mysql-server:3306/petclinic?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/petclinic?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: petclinic
   sql:
     init:
       schema-locations: classpath*:db/mysql/schema.sql
       data-locations: classpath*:db/mysql/data.sql
-      mode: NEVER
-
-
+      mode: ALWAYS
