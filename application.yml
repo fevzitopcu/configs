@@ -88,8 +88,6 @@ spring:
     init:
       schema-locations: classpath*:db/mysql/schema.sql
       data-locations: classpath*:db/mysql/data.sql
-      mode: ALWAYS
-  jpa:
-    hibernate:
-      ddl-auto: update
+      mode: NEVER
+
 
