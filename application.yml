@@ -59,21 +59,21 @@ management:
       probability: 1
 
 # Chaos Engineering
----
-spring:
-  config:
-    activate:
-      on-profile: chaos-monkey      
-management.endpoint.chaosmonkey.enabled: true
-chaos:
-  monkey:
-    enabled: true
-    watcher:
-      component: false
-      controller: false
-      repository: false
-      rest-controller: false
-      service: false
+# ---
+# spring:
+#   config:
+#     activate:
+#       on-profile: chaos-monkey      
+# management.endpoint.chaosmonkey.enabled: true
+# chaos:
+#   monkey:
+#     enabled: true
+#     watcher:
+#       component: false
+#       controller: false
+#       repository: false
+#       rest-controller: false
+#       service: false
 
 ---
 spring:
